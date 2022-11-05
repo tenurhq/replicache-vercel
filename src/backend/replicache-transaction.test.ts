@@ -28,7 +28,7 @@ test("ReplicacheTransaction", async () => {
     expect(await getEntry(executor, "s1", "foo")).equal(undefined);
     const qr = await executor(
       `select value, deleted, version
-      from entry where spaceid = 's1' and key = 'foo'`
+      from replicache_entry where spaceid = 's1' and key = 'foo'`
     );
     const [row] = qr.rows;
     expect(row).deep.equal({
@@ -58,7 +58,7 @@ test("ReplicacheTransaction overlap", async () => {
 test("ReplicacheTransaction scan", async () => {
   async function deleteAllEntries() {
     await withExecutor(async (executor) => {
-      await executor(`delete from entry`);
+      await executor(`delete from replicache_entry`);
     });
   }
   async function putEntries(entries: string[]) {

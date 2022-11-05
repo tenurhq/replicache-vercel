@@ -1,8 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { getPokeBackend } from "../backend/poke/poke.js";
 import type { SSEPokeBackend } from "../backend/poke/sse.js";
 
-export async function handlePokeSSE(req: NextApiRequest, res: NextApiResponse) {
+export async function handlePokeSSE(req: VercelRequest, res: VercelResponse) {
   if (req.query["spaceID"] === undefined) {
     res.status(400).send("Missing spaceID");
     return;

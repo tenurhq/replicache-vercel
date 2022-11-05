@@ -1,8 +1,8 @@
-import type { NextApiRequest } from "next";
-import { transact } from "./pg.js";
-import { getChangedEntries, getCookie, getLastMutationID } from "./data.js";
-import { z } from "zod";
+import type { VercelRequest } from "@vercel/node";
 import type { PullResponse } from "replicache";
+import { z } from "zod";
+import { getChangedEntries, getCookie, getLastMutationID } from "./data.js";
+import { transact } from "./pg.js";
 
 const pullRequest = z.object({
   clientID: z.string(),
@@ -11,7 +11,7 @@ const pullRequest = z.object({
 
 export async function pull(
   spaceID: string,
-  requestBody: NextApiRequest
+  requestBody: VercelRequest
 ): Promise<PullResponse> {
   console.log(`Processing pull`, JSON.stringify(requestBody, null, ""));
 

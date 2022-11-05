@@ -1,12 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import type { MutatorDefs } from "replicache";
 import { handlePokeSSE } from "./replicache-poke-sse.js";
 import { handlePull } from "./replicache-pull.js";
 import { handlePush } from "./replicache-push.js";
 
 export async function handleRequest<M extends MutatorDefs>(
-  req: NextApiRequest,
-  res: NextApiResponse,
+  req: VercelRequest,
+  res: VercelResponse,
   mutators: M
 ) {
   if (req.query === undefined) {

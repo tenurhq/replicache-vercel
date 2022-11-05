@@ -1,26 +1,24 @@
 {
-  "name": "replicache-nextjs",
+  "name": "@tenur/replicache-vercel",
   "version": "0.4.1",
-  "description": "Generic Replicache backend on Next.js",
-  "homepage": "https://github.com/rocicorp/replicache-nextjs",
-  "repository": "github:rocicorp/replicache-nextjs",
+  "description": "Generic Replicache backend on Vercel",
+  "homepage": "https://github.com/tenurhq/replicache-vercel",
+  "repository": "github:tenurhq/replicache-vercel",
   "license": "Apache-2.0",
   "scripts": {
     "format": "prettier --write 'src/*/*.{js,jsx,json,ts,tsx,html,css,md}' '*.{cjs,js,jsx,json,ts,tsx,html,css,md}'",
     "check-format": "prettier --check 'src/*.{js,jsx,json,ts,tsx,html,css,md}' '*.{cjs,js,jsx,json,ts,tsx,html,css,md}'",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx src/",
-    "build": "rm -rf lib && tsc",
+    "build": "rimraf lib && tsc",
     "prepack": "npm run lint && npm run build",
     "pretest": "npm run build",
     "test": "mocha --ui=tdd 'lib/**/*.test.js'"
   },
   "engines": {
-    "//": "npm 7 not strictly *required* but without, you need to manually install the peerDependencies below",
     "npm": ">=7.0.0"
   },
   "peerDependencies": {
     "@supabase/supabase-js": ">=2.0.0",
-    "next": ">=12.1.6",
     "pg": ">=8.6.0",
     "pg-mem": ">=2.5.0",
     "react": ">=16.0 <19.0",
@@ -37,12 +35,14 @@
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.18.0",
+    "@vercel/node": "^2.6.1",
     "chai": "^4.3.6",
     "eslint": "^8.2.0",
     "mocha": "^9.2.1",
     "prettier": "^2.2.1",
     "ts-node": "^10.7.0",
-    "typescript": "4.7.4"
+    "typescript": "4.7.4", 
+    "rimraf": "^3.0.2"
   },
   "type": "module",
   "files": [
