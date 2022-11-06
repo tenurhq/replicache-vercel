@@ -31,7 +31,7 @@ export function useReplicache<M extends MutatorDefs>({
     const r = new Replicache({
       // See https://doc.replicache.dev/licensing for how to get a license key.
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      licenseKey: process.env.NEXT_PUBLIC_REPLICACHE_LICENSE_KEY!,
+      licenseKey: process.env.VITE_REPLICACHE_LICENSE_KEY!,
       pushURL: `/api/replicache/push?spaceID=${name}`,
       pullURL: `/api/replicache/pull?spaceID=${name}`,
       name,
